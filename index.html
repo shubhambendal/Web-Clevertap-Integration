@@ -1,0 +1,89 @@
+<!Doctype Html>
+<Html>
+  <link rel="manifest" href="/manifest.json">
+<Head>
+<Title>
+Call a JavaScript function
+</Title>
+<script type = "text/javascript">
+          var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+clevertap.account.push({"id": "65R-654-5Z6Z"});
+clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+ (function () {
+		 var wzrk = document.createElement('script');
+		 wzrk.type = 'text/javascript';
+		 wzrk.async = true;
+		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+		 var s = document.getElementsByTagName('script')[0];
+		 s.parentNode.insertBefore(wzrk, s);
+  })();
+</script>
+<script>
+clevertap.onUserLogin.push({
+ "Site": {
+   "Name": "abc",            // String
+   //"Identity": 61026032,              // String or number
+   "Email": "shubham@gmail.com",         // Email address of the user
+   "Phone": "+14155551234",           // Phone (with the country code)
+   "Gender": "M",                     // Can be either M or F
+   "DOB": new Date(),                 // Date of Birth. Date object
+// optional fields. controls whether the user will be sent email, push etc.
+   "MSG-email": false,                // Disable email notifications
+   "MSG-push": true,                  // Enable push notifications
+   "MSG-sms": true,                   // Enable sms notifications
+   "MSG-whatsapp": true,              // Enable WhatsApp notifications
+ }
+})
+</script>
+<script>
+clevertap.event.push("ShubhamWeb");
+</script>
+<script>
+clevertap.notifications.push({
+    "titleText":'Would you like to receive Push Notifications?',
+  "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
+  "okButtonText":'Sign me up!',
+  "rejectButtonText":'No thanks',
+  "okButtonColor":'#F28046'});
+</script>
+<script src="./clevertap_sw.js">
+</script>
+</Head>
+<Body>
+<p>Click on the following button for calling the functions: </p>
+      <form>
+         <input type = "button" onclick = "clevertap.onUserLogin.push()" value = "Create User">
+		 <input type = "button" onclick = "clevertap.event.push()" value = "Push event">
+		 <input type = "button" onclick = "clevertap.notifications.push()" value = "Notifications Push event"> 		
+		
+      </form>
+      <p>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+  import { } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-messaging.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBv3a3SUSgmNyVJPfr99OXiwFkFgpuEp_4",
+    authDomain: "clevertapdemo-244b2.firebaseapp.com",
+    projectId: "clevertapdemo-244b2",
+    storageBucket: "clevertapdemo-244b2.appspot.com",
+    messagingSenderId: "279560350496",
+    appId: "1:279560350496:web:9c5c0b9fdbfecbc0988545",
+    measurementId: "G-52G96JC26V"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+	 
+</Body>
+</Html>
